@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>谁对谁错 - AI评判吵架裁决 | Who is Right - AI Argument Judge</title>
+    
+    <!-- SEO元标签 - 中文 -->
+    <meta name="description" content="让AI天平来裁决你们的争论！谁对谁错应用帮助情侣、朋友解决争议，公正评判谁的观点更有说服力，还能生成分享图片。">
+    <meta name="keywords" content="谁对谁错,AI裁决,情侣吵架,争论评判,人工智能评判,关系问题,冲突解决">
+    
+    <!-- SEO元标签 - 英文 -->
+    <meta name="description" lang="en" content="Let the AI Balance decide your arguments! The 'Who is Right' app helps couples and friends resolve disputes, fairly judging whose viewpoint is more convincing, and generates shareable images.">
+    <meta name="keywords" lang="en" content="who is right,AI judgment,couple arguments,dispute assessment,artificial intelligence judgment,relationship issues,conflict resolution">
+    
+    <meta name="author" content="上海贰人贝武软件有限公司 | Shanghai Erren Beiwu Software Co., Ltd.">
+    
+    <!-- 规范链接 -->
+    <link rel="canonical" href="https://giiift.site/">
+    
+    <!-- Open Graph 标签 (对社交媒体分享友好) -->
+    <meta property="og:title" content="谁对谁错 - AI评判吵架裁决 | Who is Right - AI Argument Judge">
+    <meta property="og:description" content="让AI天平来裁决你们的争论！公正评判谁的观点更有说服力，还能生成分享图片。 | Let the AI Balance decide your arguments! Fairly judge whose viewpoint is more convincing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://giiift.site/">
+    <meta property="og:image" content="https://giiift.site/images/share-preview.png">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:locale:alternate" content="en_US">
+    
+    <!-- Twitter Card 标签 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="谁对谁错 - AI评判吵架裁决 | Who is Right - AI Argument Judge">
+    <meta name="twitter:description" content="让AI天平来裁决你们的争论！| Let the AI Balance decide your arguments!">
+    <meta name="twitter:image" content="https://giiift.site/images/share-preview.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/images/logo_png.png" type="image/png">
+    <link rel="shortcut icon" href="/images/logo_png.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/logo_png.png">
+    <meta name="msapplication-TileImage" content="/images/logo_png.png">
+    <meta name="msapplication-TileColor" content="#7d5cf5">
+    <meta name="theme-color" content="#7d5cf5">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+    <!-- Google AdSense 代码 -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2943928005733111"
+     crossorigin="anonymous"></script>
+     
+    <style>
+        /* 语言切换按钮样式 */
+        .lang-switch-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #7d5cf5;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 1000;
+        }
+        
+        .lang-switch-btn:hover {
+            background-color: #6b4ed6;
+        }
+        
+        @media (max-width: 768px) {
+            .lang-switch-btn {
+                top: 10px;
+                right: 10px;
+                padding: 4px 10px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部标题 -->
+        <div class="title">
+            <h1>谁对谁错</h1>
+            <p class="subtitle">你们吵架了？让AI天平来裁决吧</p>
+        </div>
+
+        <!-- 天平区域 -->
+        <div class="scale-container">
+            <div class="scale">
+                <div class="scale-beam" id="scale-beam">
+                    <div class="scale-left">
+                        <span>男方</span>
+                        <span class="scale-score" id="male-score">50%</span>
+                    </div>
+                    <div class="scale-center"></div>
+                    <div class="scale-right">
+                        <span>女方</span>
+                        <span class="scale-score" id="female-score">50%</span>
+                    </div>
+                </div>
+                <div class="judge-cat">
+                    <svg width="70" height="70" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 小猫脸 - 更尖一点 -->
+                        <ellipse cx="60" cy="60" rx="45" ry="42" fill="#FFBB7D" />
+                        
+                        <!-- 小猫耳朵 - 埃及猫的尖耳朵 -->
+                        <path d="M30 35 Q 35 5 50 30" fill="#FFBB7D" stroke="#FF9F55" stroke-width="2" />
+                        <path d="M90 35 Q 85 5 70 30" fill="#FFBB7D" stroke="#FF9F55" stroke-width="2" />
+                        
+                        <!-- 小猫眼睛 - 埃及猫的杏眼 -->
+                        <ellipse cx="45" cy="50" rx="9" ry="7" fill="#7d5cf5" />
+                        <ellipse cx="75" cy="50" rx="9" ry="7" fill="#7d5cf5" />
+                        
+                        <!-- 埃及猫的眼线 -->
+                        <path d="M34 50 Q 38 47 46 50" stroke="black" stroke-width="1.5" fill="none" />
+                        <path d="M86 50 Q 82 47 74 50" stroke="black" stroke-width="1.5" fill="none" />
+                        <path d="M46 50 L 55 57" stroke="black" stroke-width="1" fill="none" />
+                        <path d="M74 50 L 65 57" stroke="black" stroke-width="1" fill="none" />
+                        
+                        <!-- 狡黠的瞳孔 - 垂直的细瞳孔 -->
+                        <ellipse cx="45" cy="50" rx="2" ry="5" fill="black" />
+                        <ellipse cx="75" cy="50" rx="2" ry="5" fill="black" />
+                        <circle cx="44" cy="48" r="1" fill="white" />
+                        <circle cx="74" cy="48" r="1" fill="white" />
+                        
+                        <!-- 小猫鼻子 -->
+                        <path d="M60 65 L 55 60 Q 60 55 65 60 Z" fill="#ff8e8e" />
+                        
+                        <!-- 小猫嘴 - 贱贱的微笑 -->
+                        <path d="M55 70 Q 60 75 65 70" stroke="#FF9F55" stroke-width="2" fill="none" />
+                        <path d="M55 70 Q 60 68 65 70" stroke="#FF9F55" stroke-width="1" fill="none" />
+                        
+                        <!-- 小猫胡须 -->
+                        <line x1="40" y1="65" x2="20" y2="60" stroke="#FF9F55" stroke-width="1" />
+                        <line x1="40" y1="70" x2="22" y2="72" stroke="#FF9F55" stroke-width="1" />
+                        <line x1="80" y1="65" x2="100" y2="60" stroke="#FF9F55" stroke-width="1" />
+                        <line x1="80" y1="70" x2="98" y2="72" stroke="#FF9F55" stroke-width="1" />
+                        
+                        <!-- 橘猫斑纹 - 埃及风格的条纹 -->
+                        <path d="M40 35 L 44 58" stroke="#FF7F30" stroke-width="1.5" fill="none" />
+                        <path d="M80 35 L 76 58" stroke="#FF7F30" stroke-width="1.5" fill="none" />
+                        <path d="M60 35 L 60 50" stroke="#FF7F30" stroke-width="1.5" fill="none" />
+                        <path d="M50 70 Q 60 72 70 70" stroke="#FF7F30" stroke-width="1" fill="none" />
+                        
+                        <!-- 判官帽子 - 埃及风格 -->
+                        <path d="M30 35 Q 60 20 90 35 L 85 25 Q 60 10 35 25 Z" fill="#7d5cf5" />
+                        <rect x="50" y="10" width="20" height="25" rx="0" fill="#7d5cf5" />
+                        <path d="M50 10 L 70 10 L 60 0 Z" fill="#7d5cf5" />
+                        <rect x="56" y="15" width="8" height="5" fill="gold" />
+                        
+                        <!-- 小猫表情 - 傲慢但狡猾的眉毛 -->
+                        <path d="M38 40 Q 44 37 50 40" stroke="#333" stroke-width="1.5" fill="none" />
+                        <path d="M82 40 Q 76 37 70 40" stroke="#333" stroke-width="1.5" fill="none" />
+                        
+                        <!-- 埃及风格的锤子 -->
+                        <rect x="88" y="80" width="7" height="20" rx="0" fill="#8B4513" />
+                        <path d="M84 80 Q 92 75 100 80 L 100 85 Q 92 80 84 85 Z" fill="gold" />
+                    </svg>
+                </div>
+                <div class="scale-stand"></div>
+                <div class="scale-base"></div>
+            </div>
+
+            <!-- 显示当前状态 -->
+            <div class="status-text">
+                <span id="status-text" class="status-neutral">双方各有道理</span>
+            </div>
+            
+            <!-- AI评价区域 -->
+            <div class="ai-comment-container" id="ai-comment-container" style="display: none;">
+                <div class="ai-comment">
+                    <span class="ai-icon">🤖</span>
+                    <span class="ai-text" id="ai-comment"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 输入区域 -->
+        <div class="input-container">
+            <div class="role-switch">
+                <div class="role active-boy" id="boy-role" onclick="switchRole('boy')">
+                    <span class="role-icon">👨</span>
+                    <span>男方发言</span>
+                </div>
+                <div class="role" id="girl-role" onclick="switchRole('girl')">
+                    <span class="role-icon">👩</span>
+                    <span>女方发言</span>
+                </div>
+            </div>
+
+            <!-- 角色输入框 -->
+            <div class="input-area">
+                <textarea 
+                    id="argument-input"
+                    placeholder="请输入男方的观点或理由..." 
+                    maxlength="200"
+                ></textarea>
+                <div class="buttons-row">
+                    <button class="submit-btn" id="submit-btn" onclick="submitInput()">提交发言</button>
+                    <button class="agree-btn" id="agree-btn" onclick="agreeToResult()">签字画押裁决结果</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 历史记录 -->
+        <div class="history-container" id="history-container" style="display: none;">
+            <div class="history-title">
+                <span>讨论记录</span>
+            </div>
+            <div class="history-list" id="history-list">
+                <!-- 历史记录将通过JavaScript动态添加 -->
+            </div>
+        </div>
+
+        <!-- 版权信息 -->
+        <div class="copyright-text">
+            欢迎提意见给小红书 Call me Gift
+            <br>
+            版权所有 © 2025 上海贰人贝武软件有限公司，联系 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fd9a9494949b89bdcccbced39e9290">[email&#160;protected]</a>
+            <div class="footer-links">
+                <a href="/about.html">关于我们 | About Us</a> | 
+                <a href="/sitemap.html">网站地图 | Sitemap</a>
+            </div>
+        </div>
+
+        <!-- 签名模态框 -->
+        <div class="modal fade" id="signature-modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="signature-modal-title">签名</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="signature-pad-container">
+                            <canvas id="signature-pad" width="450" height="200"></canvas>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="save-signature">保存签名</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 结果模态框 -->
+        <div class="modal fade" id="result-modal" tabindex="-1" aria-labelledby="result-modal-label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="result-modal-label">裁决结果</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-0">
+                        <div class="result-canvas-container">
+                            <canvas id="result-canvas" style="display: none;"></canvas>
+                            <!-- 图像将通过JS动态插入此处 -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger">继续吵</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.5/dist/signature_pad.umd.min.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/script.js"></script>
+    
+    <!-- 结构化数据 (JSON-LD) - 双语 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": {
+        "@language": "zh",
+        "@value": "谁对谁错"
+      },
+      "alternateName": {
+        "@language": "en",
+        "@value": "Who is Right"
+      },
+      "description": {
+        "@language": "zh",
+        "@value": "让AI天平来裁决你们的争论！谁对谁错应用帮助情侣、朋友解决争议，公正评判谁的观点更有说服力，还能生成分享图片。"
+      },
+      "abstract": {
+        "@language": "en",
+        "@value": "Let the AI Balance decide your arguments! The 'Who is Right' app helps couples and friends resolve disputes, fairly judging whose viewpoint is more convincing, and generates shareable images."
+      },
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Web",
+      "inLanguage": ["zh-CN", "en-US"],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "上海贰人贝武软件有限公司",
+        "alternateName": "Shanghai Erren Beiwu Software Co., Ltd.",
+        "email": "giiift@163.com",
+        "url": "https://giiift.site/",
+        "sameAs": ["https://giiift.site/"]
+      },
+      "potentialAction": {
+        "@type": "UseAction",
+        "actionAccessibilityRequirement": {
+          "@type": "ActionAccessSpecification",
+          "availabilityStarts": "2023-01-01T00:00:00+08:00",
+          "availabilityEnds": "2030-01-01T00:00:00+08:00"
+        }
+      }
+    }
+    </script>
+    
+    <!-- 网站结构数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://giiift.site/",
+      "name": {
+        "@language": "zh",
+        "@value": "谁对谁错"
+      },
+      "alternateName": {
+        "@language": "en",
+        "@value": "Who is Right"
+      },
+      "description": {
+        "@language": "zh",
+        "@value": "让AI天平来裁决你们的争论！"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://giiift.site/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+</body>
+</html> 

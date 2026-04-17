@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- 圆形背景 -->
+  <circle cx="256" cy="256" r="256" fill="#7d5cf5"/>
+  
+  <!-- 天平符号 - 简化的白色图案 -->
+  <g fill="white">
+    <!-- 天平横杆 -->
+    <rect x="106" y="230" width="300" height="20" rx="10"/>
+    
+    <!-- 天平中心柱 -->
+    <rect x="246" y="230" width="20" height="150" rx="5"/>
+    
+    <!-- 天平底座 -->
+    <rect x="196" y="380" width="120" height="20" rx="10"/>
+    
+    <!-- 左侧天平皿 -->
+    <circle cx="136" cy="200" r="40"/>
+    
+    <!-- 右侧天平皿 -->
+    <circle cx="376" cy="200" r="40"/>
+    
+    <!-- "谁对谁错"中文字符 - 简化 -->
+    <rect x="216" y="110" width="80" height="20" rx="5"/>
+    <rect x="216" y="140" width="80" height="20" rx="5"/>
+  </g>
+</svg> 
