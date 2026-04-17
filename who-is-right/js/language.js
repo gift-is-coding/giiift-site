@@ -66,8 +66,9 @@ const languageModule = (function() {
             // 语言切换
             lang_switch: 'Switch to English',
             
-            // 版权信息
-            copyright: '版权所有 © 2025 上海贰人贝武软件有限公司，联系 giiift@163.com'
+            // 页脚
+            footer_invite: '欢迎提意见给小红书 Call me Gift',
+            footer_copyright: '版权所有 © 2026 上海贰人贝武软件有限公司'
         },
         en: {
             // Page title
@@ -130,8 +131,9 @@ const languageModule = (function() {
             // Language switch
             lang_switch: '切换到中文',
             
-            // Copyright
-            copyright: 'Copyright © 2025 Shanghai Erren Beiwu Software Co., Ltd. Contact: giiift@163.com'
+            // Footer
+            footer_invite: 'Feedback welcome on Xiaohongshu: Call me Gift',
+            footer_copyright: 'Copyright © 2026 Shanghai Erren Beiwu Software Co., Ltd.'
         }
     };
     
@@ -257,9 +259,11 @@ const languageModule = (function() {
         if (saveBtn) saveBtn.textContent = getText('save_btn');
         if (continueBtn) continueBtn.textContent = getText('continue_btn');
         
-        // 更新版权信息
-        const copyright = document.querySelector('.copyright-text');
-        if (copyright) copyright.textContent = getText('copyright');
+        // 更新页脚文案
+        const footerInvite = document.querySelector('.footer-invite');
+        const footerCopyright = document.querySelector('.footer-copyright');
+        if (footerInvite) footerInvite.textContent = getText('footer_invite');
+        if (footerCopyright) footerCopyright.textContent = getText('footer_copyright');
         
         // 更新语言切换按钮
         updateLanguageSwitchButton();
