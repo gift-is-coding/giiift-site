@@ -1,15 +1,14 @@
 :root {
   color-scheme: light;
-  --bg: #efe6d8;
-  --bg-accent: #fbf5ee;
-  --panel: rgba(255, 250, 244, 0.84);
-  --panel-strong: #fffaf5;
-  --text: #201813;
-  --muted: #6f5d50;
-  --line: rgba(32, 24, 19, 0.12);
-  --accent: #1f3c35;
-  --accent-soft: #ecf4f1;
-  --shadow: 0 28px 70px rgba(51, 34, 21, 0.12);
+  --bg: #f7f4ee;
+  --panel: rgba(255, 255, 255, 0.78);
+  --panel-strong: #ffffff;
+  --text: #191919;
+  --muted: #626262;
+  --line: rgba(25, 25, 25, 0.12);
+  --accent: #23463f;
+  --accent-soft: #edf5f2;
+  --shadow: 0 18px 48px rgba(25, 25, 25, 0.09);
 }
 
 * {
@@ -22,12 +21,11 @@ html {
 
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 28%),
-    radial-gradient(circle at 85% 12%, rgba(223, 239, 232, 0.72), transparent 24%),
-    linear-gradient(180deg, #fbf4ea 0%, var(--bg) 100%);
+  background: var(--bg);
   color: var(--text);
-  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 }
 
 a {
@@ -89,6 +87,23 @@ img {
   border-top: 1px solid var(--line);
 }
 
+.profile-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 20px;
+  align-items: end;
+  padding: 18px 0 34px;
+}
+
+.profile-copy {
+  display: grid;
+  gap: 14px;
+}
+
+.profile-summary {
+  max-width: 680px;
+}
+
 .hero {
   border-top: none;
   padding-top: 18px;
@@ -127,7 +142,7 @@ img {
 .hero h1 {
   max-width: 760px;
   font-size: clamp(2.6rem, 4.4vw, 4rem);
-  letter-spacing: -0.05em;
+  letter-spacing: 0;
 }
 
 .hero-product h1 {
@@ -135,6 +150,7 @@ img {
 }
 
 .lede,
+.profile-summary,
 .feature p,
 .about p,
 .section-heading p,
@@ -154,9 +170,9 @@ img {
   width: fit-content;
   padding: 10px 14px;
   border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255, 248, 241, 0.78);
-  box-shadow: 0 10px 24px rgba(47, 31, 20, 0.05);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 8px 20px rgba(25, 25, 25, 0.04);
 }
 
 .founder-avatar {
@@ -166,8 +182,7 @@ img {
   object-fit: cover;
   object-position: center 34%;
   border: 2px solid rgba(255, 255, 255, 0.78);
-  box-shadow: 0 12px 30px rgba(51, 34, 21, 0.16);
-  animation: avatar-sway 4.8s ease-in-out infinite;
+  box-shadow: 0 10px 22px rgba(25, 25, 25, 0.12);
 }
 
 .founder-meta {
@@ -185,6 +200,7 @@ img {
 }
 
 .contact-pills,
+.contact-icons,
 .hero-actions,
 .hero-notes,
 .product-grid,
@@ -196,15 +212,16 @@ img {
 }
 
 .pill-link,
+.icon-link,
 .hero-note {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 40px;
   padding: 10px 14px;
-  border-radius: 999px;
+  border-radius: 8px;
   border: 1px solid var(--line);
-  background: rgba(255, 250, 244, 0.72);
+  background: var(--panel);
   color: var(--text);
   font-size: 0.9rem;
   transition:
@@ -215,11 +232,34 @@ img {
 
 .pill-link:hover,
 .pill-link:focus-visible,
+.icon-link:hover,
+.icon-link:focus-visible,
 .button:hover,
 .button:focus-visible,
 .product-card:hover,
 .product-card:focus-visible {
   transform: translateY(-1px);
+}
+
+.contact-icons {
+  margin-top: 18px;
+}
+
+.profile-intro .contact-icons {
+  justify-content: flex-end;
+  margin-top: 0;
+}
+
+.icon-link {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+}
+
+.icon-link svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
 }
 
 .hero-note {
@@ -232,7 +272,7 @@ img {
 .metric-card {
   border: 1px solid var(--line);
   background: var(--panel);
-  box-shadow: 0 8px 20px rgba(42, 28, 18, 0.05);
+  box-shadow: 0 8px 20px rgba(25, 25, 25, 0.04);
 }
 
 .button {
@@ -270,7 +310,7 @@ img {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 28px;
+  border-radius: 8px;
   box-shadow: var(--shadow);
   background: #111;
 }
@@ -325,17 +365,22 @@ img {
   object-position: 50% 0%;
 }
 
+.screenshot-image-homeskill-card {
+  object-fit: contain;
+  object-position: 50% 50%;
+}
+
 .mini-spotlight,
 .product-card,
 .info-card,
 .metric-card {
-  border-radius: 24px;
+  border-radius: 8px;
 }
 
 .mini-spotlight {
   padding: 18px 20px;
   border: 1px solid var(--line);
-  background: rgba(255, 250, 244, 0.78);
+  background: var(--panel);
 }
 
 .mini-spotlight strong {
@@ -383,11 +428,11 @@ img {
 }
 
 .product-card-primary {
-  background: rgba(255, 251, 246, 0.92);
+  background: var(--panel-strong);
 }
 
 .product-card-secondary {
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .product-card-icon {
@@ -430,10 +475,11 @@ img {
 
 .metric-grid {
   margin-top: 6px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .metric-card {
-  flex: 1 1 180px;
   padding: 16px 18px;
 }
 
@@ -489,27 +535,21 @@ img {
   justify-content: center;
 }
 
-@keyframes avatar-sway {
-  0%,
-  100% {
-    transform: translateX(0) rotate(0deg);
-  }
-
-  25% {
-    transform: translateX(2px) rotate(1deg);
-  }
-
-  75% {
-    transform: translateX(-2px) rotate(-1deg);
-  }
-}
-
 @media (max-width: 860px) {
   .hero,
   .hero-product-split,
   .proof-layout,
   .section-heading {
     grid-template-columns: 1fr;
+  }
+
+  .profile-intro {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .profile-intro .contact-icons {
+    justify-content: flex-start;
   }
 
   .hero {
@@ -540,9 +580,12 @@ img {
   .hero-actions,
   .hero-notes,
   .product-grid,
-  .use-case-grid,
-  .metric-grid {
+  .use-case-grid {
     flex-direction: column;
+  }
+
+  .metric-grid {
+    grid-template-columns: 1fr;
   }
 
   .pill-link,
