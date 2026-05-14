@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Know You for macOS | Remember what you actually did today</title>
+    <title>Know You for macOS | Private daily inputs and outputs memory</title>
     <meta
       name="description"
-      content="Know You is a macOS app for clear end-of-day recaps, weekly reviews, and work logs."
+      content="Know You is a local-first macOS app that helps you remember each day's inputs and outputs privately."
     />
     <link rel="canonical" href="https://giiift.site/know-you/" />
     <meta property="og:title" content="Know You for macOS" />
     <meta
       property="og:description"
-      content="Remember what you actually did today with a clear recap built from your workday on macOS."
+      content="A local-first macOS memory for the inputs and outputs of your day."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://giiift.site/know-you/" />
@@ -25,10 +25,10 @@
       name="twitter:image"
       content="https://giiift.site/assets/images/know-you-shot.png?v=20260428-hero"
     />
-    <link rel="stylesheet" href="/assets/css/site.css?v=20260508" />
+    <link rel="stylesheet" href="../assets/css/site.css?v=20260514-know-you-simple" />
   </head>
   <body>
-    <main class="page">
+    <main class="page page-know-you">
       <header class="topbar">
         <a class="brand" href="/">Giiift</a>
         <nav class="nav">
@@ -38,86 +38,94 @@
         </nav>
       </header>
 
-      <section class="hero hero-product hero-product-split">
+      <section class="hero hero-product hero-product-simple">
         <div class="hero-copy">
-          <p class="eyebrow">For macOS</p>
-          <h1>Remember what you actually did today.</h1>
-          <p class="lede">
-            Know You helps you review the shape of your workday, rebuild context
-            after interruptions, and write updates without guessing.
-          </p>
+          <h1 class="product-name">KnowYou</h1>
+          <p class="product-tagline">Remember all your context</p>
           <div class="hero-actions">
             <a class="button button-primary" href="/know-you/download" download>
               Download for macOS
             </a>
-            <a class="button button-secondary" href="/">Back to Giiift</a>
           </div>
-          <div class="metric-grid">
-            <div class="metric-card">
-              <strong>Daily recap</strong>
-              <span>See the important parts of the day at a glance.</span>
-            </div>
-            <div class="metric-card">
-              <strong>Context recovery</strong>
-              <span>Pick up the thread after meetings or task switches.</span>
-            </div>
-            <div class="metric-card">
-              <strong>Work logs</strong>
-              <span>Turn actual activity into notes you can reuse.</span>
-            </div>
-          </div>
+          <ul class="feature-list feature-list-plain">
+            <li>
+              <span class="feature-index">01</span>
+              <div>
+                <strong>Only in your local</strong>
+                <span>Runs on your Mac and keeps your data on your Mac.</span>
+              </div>
+            </li>
+            <li>
+              <span class="feature-index">02</span>
+              <div>
+                <strong>Silently record what happened.</strong>
+                <span>Messages, meetings, alerts, tasks, and links you saw.</span>
+              </div>
+            </li>
+            <li>
+              <span class="feature-index">03</span>
+              <div>
+                <strong>Daily output memory</strong>
+                <span>Notes, replies, commits, docs, and decisions you made.</span>
+              </div>
+            </li>
+          </ul>
         </div>
 
         <div class="product-shot" aria-label="Know You screenshot preview">
           <div class="screenshot-frame screenshot-frame-hero screenshot-frame-proof">
             <img
               class="screenshot-image screenshot-image-hero screenshot-image-proof"
-              src="/assets/images/know-you-shot.png?v=20260428-hero"
+              src="../assets/images/know-you-shot.png?v=20260428-hero"
               alt="Know You app showing a daily story and supporting context"
             />
           </div>
         </div>
       </section>
 
-      <section class="feature">
-        <div class="section-heading">
+      <section class="feature feature-apps">
+        <div class="section-heading section-heading-compact">
           <div>
-            <div class="section-label">Use cases</div>
-            <h2>When it helps.</h2>
+            <div class="section-label">Covered by notification context</div>
+            <h2>Across the apps you already use.</h2>
           </div>
           <p>
-            Useful when the day had too many tabs, meetings, and context switches
-            to reconstruct from memory alone.
+            Know You watches the shape of the day through local macOS context, so
+            the memory is broader than any single app.
           </p>
         </div>
 
-        <div class="use-case-grid">
-          <article class="info-card">
-            <strong>End-of-day recap</strong>
-            <p>Close the laptop with a clear record of what happened.</p>
-          </article>
-          <article class="info-card">
-            <strong>Weekly sync prep</strong>
-            <p>Summarize progress without digging through every app.</p>
-          </article>
-          <article class="info-card">
-            <strong>Interrupted work recovery</strong>
-            <p>Return to the right thread after the day pulls you away.</p>
-          </article>
-          <article class="info-card">
-            <strong>Work logs and diaries</strong>
-            <p>Write from actual activity instead of memory alone.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="feature feature-cta">
-        <div class="section-label">Made for macOS</div>
-        <h2>A calmer way to remember the workday.</h2>
-        <div class="hero-actions">
-          <a class="button button-primary" href="/know-you/download" download>
-            Download Know You
-          </a>
+        <div class="app-icon-grid" aria-label="Apps Know You can help remember">
+          <div class="app-icon"><img src="../assets/images/app-icons/Messages.png" alt="" /><span>Messages</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Mail.png" alt="" /><span>Mail</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Calendar.png" alt="" /><span>Calendar</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Slack.png" alt="" /><span>Slack</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Discord.png" alt="" /><span>Discord</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Teams.png" alt="" /><span>Teams</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/WeChat.png" alt="" /><span>WeChat</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/DingTalk.png" alt="" /><span>DingTalk</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Feishu.png" alt="" /><span>Feishu</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Telegram.png" alt="" /><span>Telegram</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/WhatsApp.png" alt="" /><span>WhatsApp</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Chrome.png" alt="" /><span>Chrome</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Safari.png" alt="" /><span>Safari</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Arc.png" alt="" /><span>Arc</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Xcode.png" alt="" /><span>Xcode</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/VSCode.png" alt="" /><span>VS Code</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Cursor.png" alt="" /><span>Cursor</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/GitHub.png" alt="" /><span>GitHub</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Notion.png" alt="" /><span>Notion</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Linear.png" alt="" /><span>Linear</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Figma.png" alt="" /><span>Figma</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/GoogleMeet.png" alt="" /><span>Meet</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Zoom.png" alt="" /><span>Zoom</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/ChatGPT.png" alt="" /><span>ChatGPT</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Claude.png" alt="" /><span>Claude</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Gemini.png" alt="" /><span>Gemini</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Perplexity.png" alt="" /><span>Perplexity</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Notes.png" alt="" /><span>Notes</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Reminders.png" alt="" /><span>Reminders</span></div>
+          <div class="app-icon"><img src="../assets/images/app-icons/Photos.png" alt="" /><span>Photos</span></div>
         </div>
       </section>
     </main>

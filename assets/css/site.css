@@ -43,6 +43,10 @@ img {
   padding: 20px 0 80px;
 }
 
+.page-know-you {
+  width: min(1180px, calc(100vw - 32px));
+}
+
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -147,6 +151,18 @@ img {
 
 .hero-product h1 {
   max-width: 660px;
+}
+
+.product-name {
+  font-size: clamp(4.3rem, 8vw, 7rem);
+  letter-spacing: 0;
+}
+
+.product-tagline {
+  margin: -4px 0 4px;
+  color: var(--muted);
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  line-height: 1.35;
 }
 
 .lede,
@@ -466,11 +482,177 @@ img {
 }
 
 .hero-product-split,
+.hero-product-simple,
 .proof-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
   gap: 28px;
   align-items: center;
+}
+
+.hero-product-simple {
+  grid-template-columns: minmax(0, 520px) minmax(0, 560px);
+  justify-content: center;
+  gap: 48px;
+  align-items: start;
+  padding-bottom: 48px;
+}
+
+.hero-product-simple .lede {
+  max-width: 620px;
+}
+
+.hero-product-simple .hero-copy {
+  max-width: none;
+}
+
+.hero-product-simple .hero-actions {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.hero-product-simple .button-primary {
+  width: 100%;
+}
+
+.hero-product-simple .product-shot {
+  margin-top: 140px;
+}
+
+.hero-product-simple .screenshot-frame-hero {
+  aspect-ratio: 16 / 10;
+}
+
+.feature-list-plain {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  max-width: none;
+  margin: 12px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text);
+  list-style: none;
+}
+
+.feature-list-plain li {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 11px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text);
+  overflow: hidden;
+}
+
+.feature-list-plain li + li {
+  border-top: 1px solid rgba(35, 70, 63, 0.12);
+}
+
+.feature-list-plain li::before {
+  content: none;
+}
+
+.feature-list-plain li div {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.feature-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(35, 70, 63, 0.16);
+  border-radius: 50%;
+  background: rgba(237, 245, 242, 0.82);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.feature-list-plain strong {
+  font-size: 1.02rem;
+  line-height: 1.35;
+  color: var(--accent);
+}
+
+.feature-list-plain span {
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.product-shot-caption {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.product-shot-caption strong {
+  font-size: 1.4rem;
+  line-height: 1.1;
+}
+
+.product-shot-caption span {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.feature-apps {
+  padding-top: 34px;
+}
+
+.section-heading-compact {
+  align-items: start;
+  margin-bottom: 22px;
+}
+
+.app-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.app-icon {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 14px 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 8px 20px rgba(25, 25, 25, 0.04);
+}
+
+.app-icon img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.app-icon span {
+  max-width: 100%;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.15;
+  text-align: center;
+  overflow-wrap: anywhere;
 }
 
 .metric-grid {
@@ -538,9 +720,14 @@ img {
 @media (max-width: 860px) {
   .hero,
   .hero-product-split,
+  .hero-product-simple,
   .proof-layout,
   .section-heading {
     grid-template-columns: 1fr;
+  }
+
+  .app-icon-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 
   .profile-intro {
@@ -554,6 +741,16 @@ img {
 
   .hero {
     padding-top: 28px;
+  }
+
+  .hero-product-simple .product-shot {
+    margin-top: 12px;
+  }
+}
+
+@media (min-width: 861px) and (max-width: 1160px) {
+  .hero-product-simple .product-shot {
+    margin-top: 114px;
   }
 }
 
@@ -586,6 +783,20 @@ img {
 
   .metric-grid {
     grid-template-columns: 1fr;
+  }
+
+  .app-icon-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .feature-list-plain li {
+    padding-right: 14px;
+  }
+
+  .app-icon img {
+    width: 48px;
+    height: 48px;
   }
 
   .pill-link,
