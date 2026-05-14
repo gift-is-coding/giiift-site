@@ -1,5 +1,7 @@
 const RELEASE_API_URL =
   "https://api.github.com/repos/gift-is-coding/know-you-downloads/releases/latest";
+const FALLBACK_DOWNLOAD_URL =
+  "https://github.com/gift-is-coding/know-you-downloads/releases/download/v1.0.4-build139/KnowYou-1.0.4-3.dmg";
 
 function isChecksumAsset(item) {
   return item.name && item.name.endsWith(".sha256");
@@ -20,9 +22,7 @@ async function redirectToLatestDownload() {
   });
 
   if (!response.ok) {
-    return new Response("Failed to resolve latest Know You release.", {
-      status: 502,
-    });
+    return Response.redirect(FALLBACK_DOWNLOAD_URL, 302);
   }
 
   const release = await response.json();
