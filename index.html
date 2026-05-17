@@ -6,13 +6,13 @@
     <title>giiift.site | Products by Tianfu Wu</title>
     <meta
       name="description"
-      content="A small portfolio of useful tools by Tianfu Wu: Know You, Who is Right, and HomeSkill."
+      content="A small portfolio of useful tools by Tianfu Wu: Know You, ZenAwake, Who is Right, and HomeSkill."
     />
     <link rel="canonical" href="https://giiift.site/" />
     <meta property="og:title" content="giiift.site" />
     <meta
       property="og:description"
-      content="A small portfolio of useful tools by Tianfu Wu: Know You, Who is Right, and HomeSkill."
+      content="A small portfolio of useful tools by Tianfu Wu: Know You, ZenAwake, Who is Right, and HomeSkill."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://giiift.site/" />
@@ -25,15 +25,16 @@
       name="twitter:image"
       content="https://giiift.site/assets/images/know-you-shot.png?v=20260428-hero"
     />
-    <link rel="stylesheet" href="/assets/css/site.css?v=20260508" />
+    <link rel="stylesheet" href="assets/css/site.css?v=20260518-home2" />
   </head>
   <body>
     <main class="page">
       <header class="topbar">
-        <a class="brand" href="/">giiift.site</a>
+        <a class="brand" href="./">giiift.site</a>
         <nav class="nav">
-          <a href="/know-you/">Know You</a>
-          <a href="/who-is-right/">Who is Right</a>
+          <a href="know-you/">Know You</a>
+          <a href="zenawake/index.html">ZenAwake</a>
+          <a href="who-is-right/">Who is Right</a>
           <a href="https://homeskill.org/" target="_blank" rel="noreferrer">HomeSkill</a>
           <a href="#contact">Contact</a>
           <a href="#about">About</a>
@@ -45,7 +46,7 @@
           <div class="founder-strip">
             <img
               class="founder-avatar"
-              src="/assets/images/tianfu-avatar.png?v=2"
+              src="assets/images/tianfu-avatar.png?v=2"
               alt="Portrait of Tianfu Wu"
             />
             <div class="founder-meta">
@@ -53,8 +54,9 @@
               <span>Independent builder</span>
             </div>
           </div>
-          <p class="profile-summary">
+          <p class="profile-summary profile-statement">
             I make small products, hope to touch your aha-moment.
+            <span>Thank you for having a try.</span>
           </p>
         </div>
 
@@ -117,40 +119,65 @@
       </section>
 
       <section class="feature feature-shelf" id="products">
-        <div class="section-heading">
-          <div>
-            <div class="section-label">Work</div>
-            <h2>Live projects.</h2>
-          </div>
-          <p>
-            Three products across macOS, the web, and agent tooling.
-          </p>
-        </div>
-
-        <div class="product-grid">
-          <a class="product-card product-card-primary" href="/know-you/">
+        <div class="product-grid product-grid-featured">
+          <a class="product-card product-card-primary product-card-featured" href="know-you/">
             <div class="product-thumb">
               <div class="screenshot-frame screenshot-frame-card screenshot-frame-dark">
                 <img
                   class="screenshot-image screenshot-image-card screenshot-image-know-you-card"
-                  src="/assets/images/know-you-shot.png?v=20260428-hero"
+                  src="assets/images/know-you-shot.png?v=20260428-hero"
                   alt="Know You app interface"
                 />
               </div>
             </div>
-            <span class="card-kicker">For macOS</span>
-            <strong>Know You</strong>
+            <div class="product-card-body">
+              <span class="featured-badge">Featured project</span>
+              <span class="card-kicker">For macOS</span>
+              <strong>Know You</strong>
+              <span class="card-copy">
+                A Mac app for turning a busy workday into a clear recap.
+              </span>
+              <span class="card-copy card-copy-emphasis">
+                The main thing I am building now: local-first memory for your
+                inputs, outputs, and daily work context.
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-grid product-grid-secondary-row">
+          <a class="product-card product-card-secondary product-card-zenawake" href="zenawake/index.html">
+            <div class="product-thumb product-thumb-phone">
+              <img
+                class="zenawake-card-icon"
+                src="assets/images/zenawake/icon.png?v=20260518"
+                alt=""
+              />
+              <div class="phone-preview-row">
+                <img
+                  src="assets/images/zenawake/screen-1.webp?v=20260518"
+                  alt="ZenAwake meditation timer screen"
+                />
+                <img
+                  src="assets/images/zenawake/screen-2.webp?v=20260518"
+                  alt="ZenAwake meditation sounds screen"
+                />
+              </div>
+            </div>
+            <span class="card-kicker">For iPhone and iPad</span>
+            <strong>ZenAwake</strong>
             <span class="card-copy">
-              A Mac app for turning a busy workday into a clear recap.
+              A meditation companion with wooden fish, singing bowl, sleep vibration,
+              and session records.
             </span>
           </a>
 
-          <a class="product-card product-card-secondary" href="/who-is-right/">
+          <a class="product-card product-card-secondary" href="who-is-right/">
             <div class="product-thumb">
               <div class="screenshot-frame screenshot-frame-card screenshot-frame-light">
                 <img
                   class="screenshot-image screenshot-image-card screenshot-image-who-card"
-                  src="/assets/images/who-is-right-shot.png?v=2"
+                  src="assets/images/who-is-right-shot.png?v=2"
                   alt="Who is Right web app screenshot"
                 />
               </div>
@@ -173,7 +200,7 @@
               <div class="screenshot-frame screenshot-frame-card screenshot-frame-dark">
                 <img
                   class="screenshot-image screenshot-image-card screenshot-image-homeskill-card"
-                  src="/assets/images/homeskill-og.png?v=20260508"
+                  src="assets/images/homeskill-og.png?v=20260508"
                   alt="HomeSkill website preview"
                 />
               </div>

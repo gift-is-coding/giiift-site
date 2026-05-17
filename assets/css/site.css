@@ -47,6 +47,10 @@ img {
   width: min(1180px, calc(100vw - 32px));
 }
 
+.page-zenawake {
+  width: min(1160px, calc(100vw - 32px));
+}
+
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -101,11 +105,37 @@ img {
 
 .profile-copy {
   display: grid;
-  gap: 14px;
+  gap: 16px;
 }
 
 .profile-summary {
   max-width: 680px;
+}
+
+.profile-summary.profile-statement {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  width: fit-content;
+  max-width: min(560px, 100%);
+  padding: 13px 16px;
+  border: 1px solid rgba(35, 70, 63, 0.18);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(237, 245, 242, 0.72)),
+    var(--panel);
+  color: var(--text);
+  font-size: 1.02rem;
+  font-weight: 650;
+  line-height: 1.45;
+  box-shadow: 0 10px 24px rgba(25, 25, 25, 0.05);
+}
+
+.profile-summary.profile-statement span {
+  display: block;
+  color: var(--accent);
+  font-size: 0.92rem;
+  font-weight: 700;
 }
 
 .hero {
@@ -386,6 +416,56 @@ img {
   object-position: 50% 50%;
 }
 
+.product-card-zenawake {
+  background: var(--panel);
+}
+
+.product-thumb-phone {
+  position: relative;
+  display: grid;
+  min-height: 220px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f4ee 100%);
+  box-shadow: var(--shadow);
+}
+
+.zenawake-card-icon {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  width: 58px;
+  height: 58px;
+  border-radius: 15px;
+  box-shadow: 0 12px 24px rgba(25, 25, 25, 0.16);
+}
+
+.phone-preview-row {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  padding: 26px 20px 0;
+}
+
+.phone-preview-row img {
+  width: min(42%, 128px);
+  aspect-ratio: 6 / 13;
+  border: 1px solid rgba(25, 25, 25, 0.14);
+  border-radius: 18px 18px 0 0;
+  object-fit: cover;
+  object-position: top center;
+  box-shadow: 0 16px 30px rgba(25, 25, 25, 0.15);
+}
+
+.phone-preview-row img + img {
+  transform: translateY(24px);
+}
+
 .mini-spotlight,
 .product-card,
 .info-card,
@@ -407,7 +487,7 @@ img {
 
 .section-heading {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 20px;
   align-items: end;
   margin-bottom: 18px;
@@ -419,6 +499,16 @@ img {
 
 .product-grid {
   align-items: stretch;
+}
+
+.product-grid-featured {
+  display: grid;
+  margin-bottom: 14px;
+}
+
+.product-grid-secondary-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .product-card {
@@ -445,6 +535,61 @@ img {
 
 .product-card-primary {
   background: var(--panel-strong);
+}
+
+.product-card-featured {
+  display: grid;
+  grid-template-columns: minmax(0, 1.32fr) minmax(280px, 0.68fr);
+  gap: 26px;
+  min-width: 0;
+  padding: 22px;
+  border-color: rgba(35, 70, 63, 0.24);
+  background:
+    linear-gradient(135deg, rgba(237, 245, 242, 0.82), rgba(255, 255, 255, 0.96)),
+    var(--panel-strong);
+  box-shadow: 0 24px 58px rgba(25, 25, 25, 0.1);
+}
+
+.product-card-featured .screenshot-frame-card {
+  min-height: 340px;
+}
+
+.product-card-featured .screenshot-image-card {
+  min-height: 340px;
+}
+
+.product-card-body {
+  display: grid;
+  align-content: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.product-card-featured strong {
+  font-size: clamp(2.1rem, 4vw, 3.6rem);
+  letter-spacing: 0;
+}
+
+.featured-badge {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  min-height: 30px;
+  padding: 7px 10px;
+  border: 1px solid rgba(35, 70, 63, 0.18);
+  border-radius: 8px;
+  background: var(--accent);
+  color: #f8f4ef;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.card-copy-emphasis {
+  padding-top: 12px;
+  border-top: 1px solid rgba(35, 70, 63, 0.14);
+  color: var(--accent);
 }
 
 .product-card-secondary {
@@ -521,6 +666,71 @@ img {
 
 .hero-product-simple .screenshot-frame-hero {
   aspect-ratio: 16 / 10;
+}
+
+.hero-zenawake {
+  grid-template-columns: minmax(0, 500px) minmax(360px, 1fr);
+  gap: 42px;
+  align-items: center;
+}
+
+.zenawake-title-lockup {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.zenawake-icon {
+  flex: 0 0 auto;
+  width: 86px;
+  height: 86px;
+  border-radius: 22px;
+  box-shadow: 0 16px 34px rgba(25, 25, 25, 0.14);
+}
+
+.hero-zenawake .product-name {
+  font-size: clamp(3.5rem, 7vw, 6rem);
+}
+
+.zenawake-hero-gallery {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  align-items: center;
+  padding: 18px 18px 0;
+  overflow: hidden;
+}
+
+.phone-shot {
+  display: block;
+  width: 100%;
+  aspect-ratio: 6 / 13;
+  border: 1px solid rgba(25, 25, 25, 0.14);
+  border-radius: 34px;
+  background: #f5f5f5;
+  object-fit: cover;
+  object-position: top center;
+  box-shadow: 0 20px 46px rgba(25, 25, 25, 0.16);
+}
+
+.phone-shot-main {
+  transform: translateY(18px);
+}
+
+.phone-shot-offset {
+  transform: translateY(-18px);
+}
+
+.feature-zenawake-screens {
+  overflow: hidden;
+}
+
+.zenawake-screen-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
 }
 
 .feature-list-plain {
@@ -722,12 +932,23 @@ img {
   .hero-product-split,
   .hero-product-simple,
   .proof-layout,
-  .section-heading {
+  .section-heading,
+  .product-card-featured,
+  .product-grid-secondary-row {
     grid-template-columns: 1fr;
   }
 
   .app-icon-grid {
     grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .hero-zenawake {
+    grid-template-columns: 1fr;
+  }
+
+  .zenawake-hero-gallery {
+    max-width: 620px;
+    margin: 0 auto;
   }
 
   .profile-intro {
@@ -788,6 +1009,32 @@ img {
   .app-icon-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
+  }
+
+  .zenawake-title-lockup {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .zenawake-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+  }
+
+  .zenawake-hero-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding: 8px 4px 0;
+  }
+
+  .phone-shot {
+    border-radius: 24px;
+  }
+
+  .zenawake-screen-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
 
   .feature-list-plain li {
