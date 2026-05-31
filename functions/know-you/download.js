@@ -1,10 +1,44 @@
-const UPDATE_FEED_URL =
-  "https://raw.githubusercontent.com/gift-is-coding/know-you-downloads/main/update-feed/latest.json";
-const FALLBACK_DOWNLOAD_URL =
-  "https://github.com/gift-is-coding/know-you-downloads/releases/download/v1.1.2-build305/KnowYou-1.1.2-305.dmg";
+const RELEASE_BUCKET = "knowyou-releases";
+const FALLBACK_DMG_PATH =
+  "macos/v1.1.2-build305/KnowYou-1.1.2-305.dmg";
+const FALLBACK_DMG_NAME = "KnowYou-1.1.2-305.dmg";
 
-async function redirectToLatestDownload() {
-  const response = await fetch(UPDATE_FEED_URL, {
+function supabasePublicURL(env, objectPath) {
+  const configuredURL = env.KNOWYOU_SUPABASE_URL || "";
+  const supabaseURL = configuredURL.replace(/\/+$/, "");
+  if (!supabaseURL) {
+    return null;
+  }
+
+  return `${supabaseURL}/storage/v1/object/public/${RELEASE_BUCKET}/${objectPath}`;
+}
+
+function updateFeedURL(env) {
+  return (
+    env.KNOWYOU_UPDATE_FEED_URL ||
+    supabasePublicURL(env, "update-feed/latest.json")
+  );
+}
+
+function fallbackDownloadURL(env) {
+  const publicURL = supabasePublicURL(env, FALLBACK_DMG_PATH);
+  if (!publicURL) {
+    return null;
+  }
+
+  return `${publicURL}?download=${FALLBACK_DMG_NAME}`;
+}
+
+async function redirectToLatestDownload(env) {
+  const feedURL = updateFeedURL(env);
+  const fallbackURL = fallbackDownloadURL(env);
+  if (!feedURL || !fallbackURL) {
+    return new Response("KnowYou downloads are not configured.", {
+      status: 503,
+    });
+  }
+
+  const response = await fetch(feedURL, {
     headers: {
       Accept: "application/json",
       "User-Agent": "giiift-site-download-proxy",
@@ -12,7 +46,7 @@ async function redirectToLatestDownload() {
   });
 
   if (!response.ok) {
-    return Response.redirect(FALLBACK_DOWNLOAD_URL, 302);
+    return Response.redirect(fallbackURL, 302);
   }
 
   const update = await response.json();
@@ -25,10 +59,10 @@ async function redirectToLatestDownload() {
   return Response.redirect(update.downloadURL, 302);
 }
 
-export async function onRequestGet() {
-  return redirectToLatestDownload();
+export async function onRequestGet({ env }) {
+  return redirectToLatestDownload(env);
 }
 
-export async function onRequestHead() {
-  return redirectToLatestDownload();
+export async function onRequestHead({ env }) {
+  return redirectToLatestDownload(env);
 }
