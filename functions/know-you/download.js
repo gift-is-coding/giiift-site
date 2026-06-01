@@ -1,7 +1,7 @@
 const UPDATE_FEED_URL =
   "https://raw.githubusercontent.com/gift-is-coding/know-you-downloads/main/update-feed/latest.json";
 const FALLBACK_DOWNLOAD_URL =
-  "https://github.com/gift-is-coding/know-you-downloads/releases/download/v1.1.2-build305/KnowYou-1.1.2-305.dmg";
+  "https://github.com/gift-is-coding/know-you-downloads/releases/download/v1.2.0-build315/KnowYou-1.2.0-315.dmg";
 
 async function redirectToLatestDownload() {
   const response = await fetch(UPDATE_FEED_URL, {
