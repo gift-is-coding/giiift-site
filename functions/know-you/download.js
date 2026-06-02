@@ -34,9 +34,14 @@ async function latestReleaseDownloadURL() {
 }
 
 async function redirectToLatestDownload() {
-  const response = await fetch(UPDATE_FEED_URL, {
+  const feedURL = new URL(UPDATE_FEED_URL);
+  feedURL.searchParams.set("ts", Date.now().toString());
+
+  const response = await fetch(feedURL.toString(), {
+    cache: "no-store",
     headers: {
       Accept: "application/json",
+      "Cache-Control": "no-cache",
       "User-Agent": "giiift-site-download-proxy",
     },
   });
