@@ -1,44 +1,40 @@
-const RELEASE_BUCKET = "knowyou-releases";
-const FALLBACK_DMG_PATH =
-  "macos/v1.1.2-build305/KnowYou-1.1.2-305.dmg";
-const FALLBACK_DMG_NAME = "KnowYou-1.1.2-305.dmg";
+const UPDATE_FEED_URL =
+  "https://raw.githubusercontent.com/gift-is-coding/know-you-downloads/main/update-feed/latest.json";
+const LATEST_RELEASE_API_URL =
+  "https://api.github.com/repos/gift-is-coding/know-you-downloads/releases/latest";
 
-function supabasePublicURL(env, objectPath) {
-  const configuredURL = env.KNOWYOU_SUPABASE_URL || "";
-  const supabaseURL = configuredURL.replace(/\/+$/, "");
-  if (!supabaseURL) {
-    return null;
-  }
-
-  return `${supabaseURL}/storage/v1/object/public/${RELEASE_BUCKET}/${objectPath}`;
+function isChecksumAsset(item) {
+  return item.name && item.name.endsWith(".sha256");
 }
 
-function updateFeedURL(env) {
-  return (
-    env.KNOWYOU_UPDATE_FEED_URL ||
-    supabasePublicURL(env, "update-feed/latest.json")
+function findDownloadAsset(release) {
+  return (release.assets || []).find(
+    (item) =>
+      item.name &&
+      item.name.endsWith(".dmg") &&
+      !isChecksumAsset(item) &&
+      item.browser_download_url,
   );
 }
 
-function fallbackDownloadURL(env) {
-  const publicURL = supabasePublicURL(env, FALLBACK_DMG_PATH);
-  if (!publicURL) {
+async function latestReleaseDownloadURL() {
+  const response = await fetch(LATEST_RELEASE_API_URL, {
+    headers: {
+      Accept: "application/vnd.github+json",
+      "User-Agent": "giiift-site-download-proxy",
+    },
+  });
+
+  if (!response.ok) {
     return null;
   }
 
-  return `${publicURL}?download=${FALLBACK_DMG_NAME}`;
+  const release = await response.json();
+  return findDownloadAsset(release)?.browser_download_url || null;
 }
 
-async function redirectToLatestDownload(env) {
-  const feedURL = updateFeedURL(env);
-  const fallbackURL = fallbackDownloadURL(env);
-  if (!feedURL || !fallbackURL) {
-    return new Response("KnowYou downloads are not configured.", {
-      status: 503,
-    });
-  }
-
-  const response = await fetch(feedURL, {
+async function redirectToLatestDownload() {
+  const response = await fetch(UPDATE_FEED_URL, {
     headers: {
       Accept: "application/json",
       "User-Agent": "giiift-site-download-proxy",
@@ -46,7 +42,13 @@ async function redirectToLatestDownload(env) {
   });
 
   if (!response.ok) {
-    return Response.redirect(fallbackURL, 302);
+    const fallbackURL = await latestReleaseDownloadURL();
+    if (fallbackURL) {
+      return Response.redirect(fallbackURL, 302);
+    }
+    return new Response("No downloadable Know You artifact found.", {
+      status: 404,
+    });
   }
 
   const update = await response.json();
@@ -60,9 +62,9 @@ async function redirectToLatestDownload(env) {
 }
 
 export async function onRequestGet({ env }) {
-  return redirectToLatestDownload(env);
+  return redirectToLatestDownload();
 }
 
 export async function onRequestHead({ env }) {
-  return redirectToLatestDownload(env);
+  return redirectToLatestDownload();
 }

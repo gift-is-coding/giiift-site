@@ -1,28 +1,8 @@
-const RELEASE_BUCKET = "knowyou-releases";
-
-function supabaseUpdateFeedURL(env) {
-  if (env.KNOWYOU_UPDATE_FEED_URL) {
-    return env.KNOWYOU_UPDATE_FEED_URL;
-  }
-
-  const configuredURL = env.KNOWYOU_SUPABASE_URL || "";
-  const supabaseURL = configuredURL.replace(/\/+$/, "");
-  if (!supabaseURL) {
-    return null;
-  }
-
-  return `${supabaseURL}/storage/v1/object/public/${RELEASE_BUCKET}/update-feed/latest.json`;
-}
+const UPDATE_FEED_URL =
+  "https://raw.githubusercontent.com/gift-is-coding/know-you-downloads/main/update-feed/latest.json";
 
 export async function onRequestGet({ env }) {
-  const feedURL = supabaseUpdateFeedURL(env);
-  if (!feedURL) {
-    return new Response("KnowYou update feed is not configured.", {
-      status: 503,
-    });
-  }
-
-  const response = await fetch(feedURL, {
+  const response = await fetch(UPDATE_FEED_URL, {
     headers: {
       Accept: "application/json",
       "User-Agent": "giiift-site-update-feed-proxy",
